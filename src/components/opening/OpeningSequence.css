@@ -1,0 +1,24 @@
+.opening {
+  background: var(--charcoal);
+  min-height: 100dvh;
+  color: var(--warm-white);
+}
+
+.opening .archival-label,
+.opening .display-title {
+  color: var(--warm-white);
+}
+
+.opening__beat {
+  font-size: 0.85rem;
+}
+
+.opening__photo {
+  width: min(280px, 60vw);
+  margin: 0 auto 2rem;
+}
+
+.opening__line {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  margin-bottom: 2.2rem;
+}

@@ -1,0 +1,93 @@
+/* Base palette — sage / warm white / cream / beige / charcoal.
+   This stays constant; each chapter overrides only its pastel accents. */
+:root {
+  --sage-50: #f4f6f1;
+  --sage-100: #e6ebdf;
+  --sage-200: #cdd8c0;
+  --sage-300: #aebd9c;
+  --sage-400: #8ea378;
+  --sage-500: #71875c;
+  --sage-600: #566a45;
+  --sage-700: #414f35;
+
+  --cream: #faf7f0;
+  --warm-white: #fffdf9;
+  --ivory: #f6f1e6;
+  --beige: #e8dcc8;
+  --beige-deep: #cdb896;
+
+  --charcoal: #2b2823;
+  --charcoal-soft: #4a453d;
+
+  --wood-light: #d9c3a3;
+  --wood-mid: #b7906a;
+
+  /* pastel accent palette — restrained, never neon */
+  --pastel-pink: #eec9cf;
+  --pastel-peach: #f3d3b8;
+  --pastel-coral: #eab3a0;
+  --pastel-yellow: #f2e2ab;
+  --pastel-blue: #bcd6dd;
+  --pastel-lavender: #d6cbe0;
+  --pastel-teal: #a9c9bf;
+  --pastel-orange: #eec19a;
+
+  /* structural tokens */
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 28px;
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-soft: 0 12px 40px rgba(43, 40, 35, 0.14);
+  --shadow-lift: 0 20px 60px rgba(43, 40, 35, 0.22);
+
+  --font-display: 'Instrument Serif', serif;
+  --font-ui: 'Inter', sans-serif;
+
+  /* default (opening) chapter accents */
+  --accent-1: var(--pastel-blue);
+  --accent-2: var(--sage-300);
+  --bg-chapter: var(--cream);
+  --fg-chapter: var(--charcoal);
+}
+
+[data-chapter='newborn'] {
+  --accent-1: var(--pastel-blue);
+  --accent-2: var(--sage-200);
+  --bg-chapter: var(--cream);
+  --fg-chapter: var(--charcoal);
+}
+
+[data-chapter='infant'] {
+  --accent-1: var(--pastel-yellow);
+  --accent-2: var(--sage-300);
+  --bg-chapter: var(--warm-white);
+  --fg-chapter: var(--charcoal);
+}
+
+[data-chapter='toddler'] {
+  --accent-1: var(--pastel-coral);
+  --accent-2: var(--pastel-blue);
+  --bg-chapter: var(--ivory);
+  --fg-chapter: var(--charcoal);
+}
+
+[data-chapter='preschooler'] {
+  --accent-1: var(--pastel-yellow);
+  --accent-2: var(--pastel-peach);
+  --bg-chapter: var(--cream);
+  --fg-chapter: var(--charcoal);
+}
+
+[data-chapter='child'] {
+  --accent-1: var(--pastel-orange);
+  --accent-2: var(--pastel-lavender);
+  --bg-chapter: var(--warm-white);
+  --fg-chapter: var(--charcoal);
+}
+
+[data-chapter='teen'] {
+  --accent-1: var(--pastel-lavender);
+  --accent-2: var(--sage-600);
+  --bg-chapter: var(--ivory);
+  --fg-chapter: var(--charcoal);
+}

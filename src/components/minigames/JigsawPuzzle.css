@@ -1,0 +1,29 @@
+.jigsaw-board {
+  position: relative;
+  background: var(--sage-100);
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 0 0 1px var(--sage-200);
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.jigsaw-board__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.jigsaw-piece {
+  border-radius: 2px;
+  box-shadow: 0 4px 14px rgba(43, 40, 35, 0.18);
+  background-color: var(--ivory);
+  touch-action: none;
+}
+
+.jigsaw-progress {
+  margin-top: 1.4rem;
+}

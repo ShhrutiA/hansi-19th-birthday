@@ -1,0 +1,56 @@
+.rhythm-stage-label {
+  margin-bottom: 1.6rem;
+  text-transform: lowercase;
+}
+
+.rhythm-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.7rem;
+  width: 100%;
+  max-width: 340px;
+}
+
+.rhythm-tile {
+  aspect-ratio: 3 / 4;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sage-100);
+  box-shadow: inset 0 0 0 1px var(--sage-200);
+  transition: background-color 0.3s var(--ease-premium), box-shadow 0.3s var(--ease-premium);
+}
+
+.rhythm-tile--active {
+  background: linear-gradient(160deg, var(--accent-1), var(--accent-2));
+  cursor: pointer;
+  animation: rhythm-glow 1s ease-in-out infinite;
+}
+
+/* Glow via box-shadow only — never touches layout/geometry, so the tile
+   stays a stable click target even while visually pulsing. */
+@keyframes rhythm-glow {
+  0%, 100% { box-shadow: var(--shadow-soft); }
+  50% { box-shadow: 0 12px 40px rgba(43, 40, 35, 0.14), 0 0 0 6px color-mix(in srgb, var(--accent-1) 45%, transparent); }
+}
+
+.rhythm-tile--played {
+  background: var(--sage-300);
+  cursor: default;
+}
+
+.rhythm-tile--pending {
+  opacity: 0.6;
+}
+
+.rhythm-tile__check {
+  color: var(--warm-white);
+  font-size: 1.2rem;
+}
+
+.rhythm-progress {
+  margin-top: 1.6rem;
+}

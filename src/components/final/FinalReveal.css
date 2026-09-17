@@ -1,0 +1,42 @@
+.final-reveal {
+  position: relative;
+  min-height: 100dvh;
+  background: var(--cream);
+}
+
+.final-reveal__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px);
+}
+
+.final-reveal__spark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 340px;
+  height: 340px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--pastel-yellow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.final-reveal__line {
+  position: relative;
+  font-size: clamp(2.8rem, 10vw, 5.5rem);
+  margin: 0;
+  line-height: 1.05;
+}
+
+.final-reveal__body {
+  position: relative;
+  margin-top: 2rem;
+  max-width: 40ch;
+  color: var(--charcoal-soft);
+  font-size: 1.05rem;
+}

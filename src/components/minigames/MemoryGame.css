@@ -1,0 +1,49 @@
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.memory-card {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  aspect-ratio: 1;
+  perspective: 800px;
+}
+
+.memory-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.memory-card__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.memory-card__face--back {
+  background: linear-gradient(160deg, var(--sage-300), var(--sage-500));
+}
+
+.memory-card__face--front {
+  background: var(--warm-white);
+  color: var(--charcoal);
+  transform: rotateY(180deg);
+}
+
+@media (max-width: 480px) {
+  .memory-grid { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+}

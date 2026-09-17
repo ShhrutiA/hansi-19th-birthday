@@ -1,0 +1,82 @@
+.photo-flip {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  perspective: 1000px;
+}
+
+/* Idle "come click me" cue via shadow pulse only — never shifts the
+   button's own box, so it stays a stable, reliable click target. */
+.photo-flip--idle-float .photo-flip__inner {
+  animation: photo-flip-glow 3.2s ease-in-out infinite;
+}
+
+@keyframes photo-flip-glow {
+  0%, 100% { box-shadow: var(--shadow-soft); }
+  50% { box-shadow: 0 16px 46px rgba(43, 40, 35, 0.2); }
+}
+
+.photo-flip__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+.photo-flip__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-flip__face--front {
+  background: repeating-linear-gradient(135deg, var(--sage-100), var(--sage-100) 10px, var(--ivory) 10px, var(--ivory) 20px);
+  position: relative;
+}
+
+.photo-flip__face--front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-flip__face--back {
+  background: var(--warm-white);
+  transform: rotateY(180deg);
+  padding: 1.4rem;
+  text-align: center;
+}
+
+.photo-flip__face--back p {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--charcoal);
+  line-height: 1.5;
+}
+
+.photo-flip__cue {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+  background: color-mix(in srgb, var(--warm-white) 80%, transparent);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+}
+
+.photo-flip--clicked .photo-flip__cue {
+  display: none;
+}

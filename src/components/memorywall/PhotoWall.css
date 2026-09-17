@@ -1,0 +1,27 @@
+.photo-wall__hint {
+  font-style: italic;
+  color: var(--charcoal-soft);
+  margin: 0.6rem 0 2.4rem;
+}
+
+.photo-wall__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 1.6rem 1.2rem;
+  max-width: 720px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.photo-wall__tile:nth-child(2n) {
+  margin-top: 1.4rem;
+}
+
+.photo-wall__counter {
+  margin-bottom: 1.6rem;
+}
+
+@media (max-width: 640px) {
+  .photo-wall__grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .photo-wall__tile:nth-child(2n) { margin-top: 1rem; }
+}
