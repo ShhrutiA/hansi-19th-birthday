@@ -2,6 +2,8 @@ import { AnimatePresence } from 'framer-motion';
 import { useGameStore } from '../state/gameStore';
 import { CHAPTERS, getChapter } from '../content/chapters';
 import { CHAPTER_PHOTOS } from '../content/photos';
+import { AUDIO } from '../content/audio';
+import { useBackgroundMusic } from '../state/useAudio';
 
 import ChapterTransition from '../components/shared/ChapterTransition';
 import ChapterIntro from '../components/shared/ChapterIntro';
@@ -15,7 +17,6 @@ import WalkingGame from '../components/minigames/WalkingGame';
 import MemoryGame from '../components/minigames/MemoryGame';
 import JigsawPuzzle from '../components/minigames/JigsawPuzzle';
 import Quiz from '../components/quiz/Quiz';
-import TeenMontage from '../components/montage/TeenMontage';
 import PhotoWall from '../components/memorywall/PhotoWall';
 import LetterScreen from '../components/letter/LetterScreen';
 import FinalReveal from '../components/final/FinalReveal';
@@ -35,6 +36,10 @@ function chapterWithAmbient(id) {
   return { ...getChapter(id), ambient: CHAPTER_PHOTOS[id]?.ambient };
 }
 
+// Ending music plays continuously across these stages — Photo Wall through
+// the Final Reveal — without restarting/refading between them.
+const ENDING_STAGES = ['photo-wall', 'letter-intro', 'letter', 'final'];
+
 export default function GameFlow() {
   const stage = useGameStore((s) => s.stage);
   const advance = useGameStore((s) => s.advance);
@@ -42,6 +47,9 @@ export default function GameFlow() {
   const chapterNum = useGameStore((s) => s.currentChapterNumber());
 
   const activeChapter = chapterNum ? CHAPTERS[chapterNum - 1] : null;
+
+  const isEndingStage = ENDING_STAGES.includes(stage);
+  useBackgroundMusic(isEndingStage ? AUDIO.ending : null, { volume: 0.4 });
 
   const renderStage = () => {
     switch (stage) {
@@ -91,8 +99,6 @@ export default function GameFlow() {
 
       case 'ch-teen':
         return <ChapterIntro chapter={chapterWithAmbient('teen')} onContinue={advance} ctaLabel="BEGIN" />;
-      case 'montage':
-        return <TeenMontage onComplete={advance} />;
 
       case 'wall-intro':
         return <WallIntro onContinue={advance} />;

@@ -9,7 +9,7 @@ export const STAGES = [
   'ch-toddler', 'game-memory', 'reveal-toddler',
   'ch-preschooler', 'game-jigsaw', 'reveal-preschooler',
   'ch-child', 'quiz',
-  'ch-teen', 'montage',
+  'ch-teen',
   'wall-intro', 'photo-wall',
   'letter-intro', 'letter',
   'final',
@@ -72,14 +72,14 @@ export const useGameStore = create((set, get) => ({
 
   currentChapterNumber: () => {
     const { stage } = get();
-    if (stage.startsWith('ch-') || stage.startsWith('game-') || stage.startsWith('reveal-') || stage === 'quiz' || stage === 'montage') {
+    if (stage.startsWith('ch-') || stage.startsWith('game-') || stage.startsWith('reveal-') || stage === 'quiz') {
       const map = {
         'ch-newborn': 1, 'game-rhythm': 1, 'reveal-newborn': 1,
         'ch-infant': 2, 'game-walking': 2, 'reveal-infant': 2,
         'ch-toddler': 3, 'game-memory': 3, 'reveal-toddler': 3,
         'ch-preschooler': 4, 'game-jigsaw': 4, 'reveal-preschooler': 4,
         'ch-child': 5, 'quiz': 5,
-        'ch-teen': 6, 'montage': 6,
+        'ch-teen': 6,
       };
       return map[stage] ?? null;
     }

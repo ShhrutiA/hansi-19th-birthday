@@ -22,20 +22,7 @@ export const AUDIO = {
     reveal: '/audio/sfx/reveal.mp3',
     tap: '/audio/sfx/tap.mp3',
   },
-  rhythm: {
-    // Newborn rhythm game — cry texture progressing toward the melody.
-    cry: '/audio/chapters/rhythm-cry.mp3',
-    tones: [
-      '/audio/chapters/rhythm-tone-1.mp3',
-      '/audio/chapters/rhythm-tone-2.mp3',
-      '/audio/chapters/rhythm-tone-3.mp3',
-      '/audio/chapters/rhythm-tone-4.mp3',
-      '/audio/chapters/rhythm-tone-5.mp3',
-    ],
-    melody: '/audio/chapters/rhythm-melody.mp3',
-  },
-  montage: {
-    song: '/audio/montage/teen-song.mp3',
-    placeholderLabel: '[TEEN SONG]',
-  },
+  // Plays continuously from the Photo Wall through to the Final Reveal —
+  // the ending's one continuous soundtrack.
+  ending: '/audio/ending/finale.m4a',
 };

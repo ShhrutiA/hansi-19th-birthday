@@ -35,14 +35,16 @@ export default function FinalReveal() {
         </motion.h1>
       ))}
 
-      <motion.p
-        className="final-reveal__body"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 1 }}
-      >
-        {FINAL_MESSAGE.body}
-      </motion.p>
+      {FINAL_MESSAGE.body && (
+        <motion.p
+          className="final-reveal__body"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.4, duration: 1 }}
+        >
+          {FINAL_MESSAGE.body}
+        </motion.p>
+      )}
     </div>
   );
 }

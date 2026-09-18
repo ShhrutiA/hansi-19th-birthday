@@ -1,12 +1,12 @@
 .opening {
-  background: var(--charcoal);
+  background: var(--cream);
   min-height: 100dvh;
-  color: var(--warm-white);
+  color: var(--charcoal);
 }
 
 .opening .archival-label,
 .opening .display-title {
-  color: var(--warm-white);
+  color: var(--charcoal);
 }
 
 .opening__beat {

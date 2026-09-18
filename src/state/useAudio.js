@@ -32,14 +32,26 @@ export function useBackgroundMusic(src, { volume = 0.35, loop = true } = {}) {
     if (!src) return undefined;
     let cancelled = false;
     const sound = new Howl({ src: [src], loop, volume: 0, html5: true });
-    sound.on('loaderror', () => {});
+    sound.on('loaderror', (id, err) => {
+      console.warn('[useBackgroundMusic] failed to load', src, err);
+    });
+
+    const start = () => {
+      if (cancelled || muted) return;
+      const playId = sound.play();
+      if (playId === null || playId === undefined) {
+        // Autoplay was blocked — Howler will emit 'unlock' once a user
+        // gesture lands, at which point we retry.
+        sound.once('unlock', start);
+        return;
+      }
+      sound.fade(0, volume, 900);
+    };
+
     sound.on('load', () => {
       if (cancelled) return;
       howlRef.current = sound;
-      if (!muted) {
-        sound.play();
-        sound.fade(0, volume, 900);
-      }
+      start();
     });
 
     return () => {

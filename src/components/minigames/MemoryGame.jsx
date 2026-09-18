@@ -1,18 +1,16 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import MiniGameContainer from './MiniGameContainer';
 import SuccessScreen from '../shared/SuccessScreen';
 import { usePlaySfx } from '../../state/useAudio';
 import { AUDIO } from '../../content/audio';
+import { MEMORY_CARDS } from '../../content/memoryCards';
 import './MemoryGame.css';
 
-// Placeholder card faces — swap for real childhood-themed images/icons later.
-const SYMBOLS = ['◆', '●', '▲', '■', '✦', '❖'];
-
 function shuffledDeck() {
-  const pairs = [...SYMBOLS, ...SYMBOLS].map((symbol, i) => ({
-    id: `${symbol}-${i}`,
-    symbol,
+  const pairs = [...MEMORY_CARDS, ...MEMORY_CARDS].map((card, i) => ({
+    ...card,
+    uid: `${card.id}-${i}`,
   }));
   for (let i = pairs.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -45,7 +43,7 @@ export default function MemoryGame({ onComplete }) {
     if (next.length === 2) {
       setBusy(true);
       const [a, b] = next;
-      const isMatch = deck[a].symbol === deck[b].symbol;
+      const isMatch = deck[a].id === deck[b].id;
       setTimeout(() => {
         if (isMatch) {
           playSfx(AUDIO.sfx.match, { volume: 0.5 });
@@ -82,10 +80,10 @@ export default function MemoryGame({ onComplete }) {
           const isFaceUp = flipped.includes(index) || matched.has(index);
           return (
             <button
-              key={card.id}
+              key={card.uid}
               className="memory-card"
               onClick={() => handleFlip(index)}
-              aria-label={isFaceUp ? card.symbol : 'hidden card'}
+              aria-label={isFaceUp ? card.label : 'hidden card'}
             >
               <motion.div
                 className="memory-card__inner"
@@ -93,7 +91,10 @@ export default function MemoryGame({ onComplete }) {
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="memory-card__face memory-card__face--back" />
-                <div className="memory-card__face memory-card__face--front">{card.symbol}</div>
+                <div className="memory-card__face memory-card__face--front">
+                  {card.icon && <span className="memory-card__icon">{card.icon}</span>}
+                  <span className="memory-card__label">{card.label}</span>
+                </div>
               </motion.div>
             </button>
           );

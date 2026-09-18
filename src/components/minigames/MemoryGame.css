@@ -42,8 +42,27 @@
   background: var(--warm-white);
   color: var(--charcoal);
   transform: rotateY(180deg);
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.4rem;
+  text-align: center;
+}
+
+.memory-card__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.memory-card__label {
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--charcoal-soft);
 }
 
 @media (max-width: 480px) {
   .memory-grid { grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+  .memory-card__icon { font-size: 1.3rem; }
+  .memory-card__label { font-size: 0.5rem; }
 }

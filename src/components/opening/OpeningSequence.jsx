@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CHAPTER_PHOTOS } from '../../content/photos';
+import { OPENING_PHOTO } from '../../content/photos';
 import PhotoFrame from '../shared/PhotoFrame';
 import Button from '../shared/Button';
 import './OpeningSequence.css';
@@ -42,7 +42,7 @@ export default function OpeningSequence({ onContinue }) {
           transition={{ duration: 1 }}
         >
           <div className="opening__photo">
-            <PhotoFrame src={CHAPTER_PHOTOS.newborn.src} placeholderLabel={CHAPTER_PHOTOS.newborn.placeholderLabel} variant="scan" />
+            <PhotoFrame src={OPENING_PHOTO.src} placeholderLabel={OPENING_PHOTO.placeholderLabel} variant="scan" />
           </div>
           <motion.p
             className="display-title opening__line"

@@ -30,20 +30,9 @@ export default function MemoryReveal({ photo, onContinue }) {
       </motion.div>
 
       <motion.div
-        className="memory-reveal__meta"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
-      >
-        <span className="archival-label">AGE: {photo?.age}</span>
-        <span className="archival-label">YEAR: {photo?.year}</span>
-        <span className="archival-label">LOCATION: {photo?.location}</span>
-      </motion.div>
-
-      <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.9, duration: 0.6 }}
+        transition={{ delay: 0.6, duration: 0.6 }}
       >
         <Button onClick={onContinue}>CONTINUE</Button>
       </motion.div>

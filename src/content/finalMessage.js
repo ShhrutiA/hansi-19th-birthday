@@ -2,6 +2,6 @@
 
 export const FINAL_MESSAGE = {
   heading: ['HAPPY BIRTHDAY,', 'HANSI.'],
-  body: '[FINAL MESSAGE]',
+  body: '',
   photo: null, // e.g. '/photos/teen/photo-1.jpg'
 };
