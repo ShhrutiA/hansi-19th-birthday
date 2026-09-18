@@ -32,9 +32,7 @@ export function useBackgroundMusic(src, { volume = 0.35, loop = true } = {}) {
     if (!src) return undefined;
     let cancelled = false;
     const sound = new Howl({ src: [src], loop, volume: 0, html5: true });
-    sound.on('loaderror', (id, err) => {
-      console.warn('[useBackgroundMusic] failed to load', src, err);
-    });
+    sound.on('loaderror', () => {});
 
     const start = () => {
       if (cancelled || muted) return;
@@ -46,6 +44,19 @@ export function useBackgroundMusic(src, { volume = 0.35, loop = true } = {}) {
         return;
       }
       sound.fade(0, volume, 900);
+
+      // Belt-and-braces: some browsers reject play() asynchronously in a way
+      // Howler's return value doesn't catch. Verify actual progress shortly
+      // after and retry on the next real click if it never actually started.
+      setTimeout(() => {
+        if (cancelled || muted) return;
+        if (sound.playing(playId)) return;
+        const retryOnClick = () => {
+          document.removeEventListener('click', retryOnClick, true);
+          start();
+        };
+        document.addEventListener('click', retryOnClick, true);
+      }, 1200);
     };
 
     sound.on('load', () => {

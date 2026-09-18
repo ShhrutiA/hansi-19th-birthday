@@ -1,6 +1,4 @@
 // Chapter 05 — "HOW WELL DO YOU KNOW YOURSELF?"
-// PLACEHOLDER QUESTIONS ONLY. Do not treat these as real content.
-// Replace each entry with real questions/options/answers/feedback when provided.
 // Shape per question:
 //   question: string
 //   options: [string, string, string, string]
@@ -11,34 +9,45 @@
 export const QUIZ_QUESTIONS = [
   {
     id: 'q1',
-    question: '[QUIZ QUESTION]',
-    options: ['[QUIZ OPTION A]', '[QUIZ OPTION B]', '[QUIZ OPTION C]', '[QUIZ OPTION D]'],
-    correctIndex: 0,
+    question: 'Why is tiny Hansi in jail?',
+    options: ['War crimes', 'Tax evasion', 'Drug dealing', 'Involuntary manslaughter'],
+    correctIndex: 1,
     feedback: {
-      correct: '[QUIZ FEEDBACK]',
-      incorrect: '[QUIZ FEEDBACK]',
+      correct: '',
+      incorrect: '',
     },
-    image: null,
+    image: '/photos/quiz/jail.jpg',
   },
   {
     id: 'q2',
-    question: '[QUIZ QUESTION]',
-    options: ['[QUIZ OPTION A]', '[QUIZ OPTION B]', '[QUIZ OPTION C]', '[QUIZ OPTION D]'],
-    correctIndex: 0,
+    question: 'How many pani puris are in this plate?',
+    options: ['22', '26', '19', '31'],
+    correctIndex: 1,
     feedback: {
-      correct: '[QUIZ FEEDBACK]',
-      incorrect: '[QUIZ FEEDBACK]',
+      correct: '',
+      incorrect: '',
     },
-    image: null,
+    image: '/photos/quiz/panipuri.jpg',
   },
   {
     id: 'q3',
-    question: '[QUIZ QUESTION]',
-    options: ['[QUIZ OPTION A]', '[QUIZ OPTION B]', '[QUIZ OPTION C]', '[QUIZ OPTION D]'],
+    question: 'Where was this photo taken?',
+    options: ['Ooty', 'Hyderabad', 'Papikondalu', 'Ananthagiri Hills'],
+    correctIndex: 2,
+    feedback: {
+      correct: '',
+      incorrect: '',
+    },
+    image: '/photos/quiz/papikondalu.jpg',
+  },
+  {
+    id: 'q4',
+    question: 'What fruit or vegetable did you eat and put back in the fridge?',
+    options: ['Tomato', 'Cucumber', 'Onion', 'Lemon'],
     correctIndex: 0,
     feedback: {
-      correct: '[QUIZ FEEDBACK]',
-      incorrect: '[QUIZ FEEDBACK]',
+      correct: '',
+      incorrect: '',
     },
     image: null,
   },

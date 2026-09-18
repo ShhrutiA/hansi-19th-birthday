@@ -87,7 +87,7 @@ export default function Quiz({ onComplete }) {
             })}
           </div>
 
-          {revealed && (
+          {revealed && (selected === question.correctIndex ? question.feedback.correct : question.feedback.incorrect) && (
             <motion.p
               className="quiz__feedback"
               initial={{ opacity: 0, y: 6 }}

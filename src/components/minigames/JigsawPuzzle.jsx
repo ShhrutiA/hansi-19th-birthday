@@ -64,8 +64,16 @@ function scatterPosition(index, total, boardSize) {
 
 export default function JigsawPuzzle({ onComplete, pieceCount = JIGSAW_PHOTO.pieceCount }) {
   const boardSize = useBoardSize();
-  const cols = Math.round(Math.sqrt((pieceCount * 4) / 3));
-  const rows = Math.round(pieceCount / cols) || 1;
+  // Find the cols x rows grid closest to square that multiplies out to
+  // exactly pieceCount, so the configured count and the actual grid always
+  // match (a rounded sqrt-based guess can silently produce a different total).
+  const cols = useMemo(() => {
+    for (let c = Math.round(Math.sqrt(pieceCount)); c >= 1; c -= 1) {
+      if (pieceCount % c === 0) return c;
+    }
+    return 1;
+  }, [pieceCount]);
+  const rows = pieceCount / cols;
   const pieces = useMemo(() => buildPieces(cols, rows, boardSize), [cols, rows, boardSize]);
   const total = pieces.length;
 
